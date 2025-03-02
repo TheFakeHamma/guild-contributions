@@ -1,3 +1,5 @@
+const pool = require("../config/db");
+
 const { addContribution } = require("../models/contributionModel");
 const { updateCampaignProgress } = require("../models/campaignModel");
 
@@ -13,4 +15,19 @@ const addContributionHandler = async (req, res) => {
     }
 };
 
-module.exports = { addContributionHandler }; // Ensure this is exported
+const getUserContributions = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = await pool.query(
+            "SELECT item_name, quantity, points_awarded FROM contributions WHERE user_id = $1 ORDER BY created_at DESC",
+            [id]
+        );
+
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
+module.exports = { addContributionHandler, getUserContributions };

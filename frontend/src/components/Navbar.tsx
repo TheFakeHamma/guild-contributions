@@ -10,6 +10,7 @@ function Navbar() {
         <Link to="/leaderboard">Leaderboard</Link>
         <Link to="/recruitment">Recruit</Link>
         <Link to="/contribution">Contribute</Link>
+        <Link to="/users">Users</Link>
       </div>
     </nav>
   );
