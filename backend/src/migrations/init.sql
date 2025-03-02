@@ -22,7 +22,8 @@ CREATE TABLE contributions (
     user_id INT REFERENCES users (id) ON DELETE CASCADE,
     item_name VARCHAR(100) NOT NULL,
     quantity INT NOT NULL CHECK (quantity > 0),
-    points_awarded NUMERIC(5, 2) NOT NULL, -- ✅ Allows decimals like 1.5, 0.5
+    amount INT NOT NULL CHECK (amount > 0),
+    points_awarded NUMERIC(5, 2) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
