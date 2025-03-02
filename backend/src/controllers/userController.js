@@ -1,3 +1,4 @@
+const pool = require("../config/db");
 const { createUser, getUserByDiscordId } = require("../models/userModel");
 
 const registerUser = async (req, res) => {
@@ -14,4 +15,14 @@ const registerUser = async (req, res) => {
     }
 };
 
-module.exports = { registerUser };
+const getAllUsers = async (req, res) => {
+    try {
+        const result = await pool.query("SELECT id, username FROM users ORDER BY username ASC");
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
+module.exports = { getAllUsers, registerUser };
