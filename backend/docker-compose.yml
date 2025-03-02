@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:15
+    container_name: powerhouse-db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secretpassword
+      POSTGRES_DB: powerhouse
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./src/migrations:/docker-entrypoint-initdb.d
+volumes:
+  postgres_data:
