@@ -4,6 +4,7 @@ import Leaderboard from "./pages/Leaderboard";
 import Recruitment from "./pages/Recruitment";
 import Contribution from "./pages/Contribution";
 import Navbar from "./components/Navbar";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/recruitment" element={<Recruitment />} />
         <Route path="/contribution" element={<Contribution />} />

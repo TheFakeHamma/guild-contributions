@@ -1,8 +1,117 @@
 [
-    { "name": "Titansteel Bar", "points": 2 },
-    { "name": "Titanium Bar", "points": 1.5 },
-    { "name": "Frozen Lotus", "points": 2 },
-    { "name": "Goldclover", "points": 1 },
-    { "name": "Lichbloom", "points": 0.5 }
-  ]
-  
+  {
+    "name": "Titansteel Bar",
+    "amount": 5,
+    "points": 2
+  },
+  {
+    "name": "Titanium Bar",
+    "amount": 5,
+    "points": 1.5
+  },
+  {
+    "name": "Titanium Ore",
+    "amount": 5,
+    "points": 1
+  },
+  {
+    "name": "Cardinal Ruby",
+    "amount": 1,
+    "points": 1.5
+  },
+  {
+    "name": "Majestic Zircon",
+    "amount": 1,
+    "points": 1.5
+  },
+  {
+    "name": "King's Amber",
+    "amount": 1,
+    "points": 1.5
+  },
+  {
+    "name": "Dreadstone",
+    "amount": 1,
+    "points": 1
+  },
+  {
+    "name": "Dragon's Eye",
+    "amount": 1,
+    "points": 1
+  },
+  {
+    "name": "Siren's Tear",
+    "amount": 1,
+    "points": 0.5
+  },
+  {
+    "name": "Arctic Fur",
+    "amount": 4,
+    "points": 2
+  },
+  {
+    "name": "All Northrend leathers",
+    "amount": 10,
+    "points": 1
+  },
+  {
+    "name": "Bolt of Imbued Frostweave Cloth",
+    "amount": 5,
+    "points": 1
+  },
+  {
+    "name": "Frozen Lotus",
+    "amount": 5,
+    "points": 2
+  },
+  {
+    "name": "Goldclover",
+    "amount": 10,
+    "points": 1
+  },
+  {
+    "name": "Lichbloom",
+    "amount": 10,
+    "points": 0.5
+  },
+  {
+    "name": "Primordial Saronite",
+    "amount": 1,
+    "points": 2
+  },
+  {
+    "name": "Crusader Orb",
+    "amount": 1,
+    "points": 2
+  },
+  {
+    "name": "Runed Orb",
+    "amount": 1,
+    "points": 2
+  },
+  {
+    "name": "Crafted/rare ilvl 245+ BoEs",
+    "amount": 1,
+    "points": 2
+  },
+  {
+    "name": "ToC + Ulduar patterns/schematics/plans/recipes",
+    "amount": 1,
+    "points": 1.5
+  },
+  {
+    "name": "Frozen Orb",
+    "amount": 4,
+    "points": 1
+  },
+  {
+    "name": "Abyss Crystals",
+    "amount": 4,
+    "points": 0.5
+  },
+  {
+    "name": "Eternal Fire & Shadow",
+    "amount": 4,
+    "points": 0.5
+  }
+]

@@ -16,6 +16,7 @@ function Contribution() {
   const [selectedItem, setSelectedItem] = useState<ContributionItem | null>(
     null
   );
+  const [quantity, setQuantity] = useState<number>(1);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -28,7 +29,8 @@ function Contribution() {
 
   const items: ContributionItem[] = contributionData.map((item) => ({
     value: item.name,
-    label: `${item.name} (+${item.points} points)`,
+    label: `x${item.amount} ${item.name} - (+${item.points} points)`, // ✅ Display amount in dropdown
+    amount: item.amount,
     points: item.points,
   }));
 
@@ -39,14 +41,18 @@ function Contribution() {
       return;
     }
 
+    const totalPoints = quantity * selectedItem.points; // ✅ Correctly calculates total points
+
     try {
       const response = await axios.post(`${API_URL}/contributions/contribute`, {
         user_id: selectedUser.value,
         item_name: selectedItem.value,
-        quantity: 5,
-        points_awarded: selectedItem.points,
+        quantity,
+        points_awarded: totalPoints,
       });
-      setMessage(`✅ ${response.data.item_name} contributed!`);
+      setMessage(
+        `✅ ${quantity}x ${response.data.item_name} contributed! Total Points: ${totalPoints}`
+      );
     } catch (error) {
       setMessage("❌ Error adding contribution");
     }
@@ -75,6 +81,16 @@ function Contribution() {
           isSearchable
           className="text-black"
         />
+        <input
+          type="number"
+          min="1"
+          value={quantity}
+          onChange={(e) => setQuantity(parseInt(e.target.value))}
+          required
+          className="p-2 bg-gray-800 border border-gray-700 rounded"
+          placeholder="Enter quantity"
+        />
+        <p>Total Points: {selectedItem ? quantity * selectedItem.points : 0}</p>
         <button
           type="submit"
           className="p-2 bg-green-600 rounded hover:bg-green-700"

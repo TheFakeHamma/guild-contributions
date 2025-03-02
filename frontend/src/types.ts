@@ -6,5 +6,6 @@ export interface User {
 export interface ContributionItem {
   value: string;
   label: string;
+  amount: number;
   points: number;
 }
