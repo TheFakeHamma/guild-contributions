@@ -6,13 +6,13 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Recruitment table
-CREATE TABLE IF NOT EXISTS recruitments (
+-- Create recruitments table
+CREATE TABLE recruitments (
     id SERIAL PRIMARY KEY,
-    recruiter_id INT REFERENCES users (id) ON DELETE CASCADE,
-    recruit_name VARCHAR(50) NOT NULL,
-    recruit_level INT CHECK (recruit_level = 80),
-    points_awarded INT DEFAULT 2,
+    recruiter_id INT REFERENCES users(id) ON DELETE CASCADE,
+    recruit_name VARCHAR(100) NOT NULL,
+    recruit_type VARCHAR(10) CHECK (recruit_type IN ('main', 'alt')) NOT NULL, --
+    participated_in_raid BOOLEAN DEFAULT FALSE, --
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -32,5 +32,13 @@ CREATE TABLE campaign_progress (
     user_id INT UNIQUE REFERENCES users (id) ON DELETE CASCADE,
     points NUMERIC(5, 2) DEFAULT 0, -- ✅ Allows decimals for total points
     rewards_claimed JSONB DEFAULT '[]',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create history log table
+CREATE TABLE history_log (
+    id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(id) ON DELETE CASCADE,
+    action TEXT NOT NULL, -- ✅ Store event like "Recruited JohnDoe", "Removed recruit JohnDoe"
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

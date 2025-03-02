@@ -8,6 +8,10 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 function Recruitment() {
   const [recruitName, setRecruitName] = useState("");
+  const [selectedRecruitType, setSelectedRecruitType] = useState<{
+    value: string;
+    label: string;
+  } | null>(null);
   const [users, setUsers] = useState<{ value: number; label: string }[]>([]);
   const [selectedUser, setSelectedUser] = useState<{
     value: number;
@@ -25,8 +29,8 @@ function Recruitment() {
 
   const handleRecruit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedUser) {
-      setMessage("❌ Please select a recruiter.");
+    if (!selectedUser || !selectedRecruitType) {
+      setMessage("❌ Please select a recruiter and recruit type.");
       return;
     }
 
@@ -34,8 +38,11 @@ function Recruitment() {
       const response = await axios.post(`${API_URL}/recruitments/recruit`, {
         recruiter_id: selectedUser.value,
         recruit_name: recruitName,
+        recruit_type: selectedRecruitType.value,
       });
-      setMessage(`✅ Recruit ${response.data.recruit_name} added!`);
+      setMessage(
+        `✅ Recruit ${response.data.recruit_name} (${selectedRecruitType.label}) added!`
+      );
     } catch (error) {
       setMessage("❌ Error adding recruit");
     }
@@ -60,6 +67,17 @@ function Recruitment() {
           onChange={(e) => setRecruitName(e.target.value)}
           required
           className="p-2 bg-gray-800 border border-gray-700 rounded"
+        />
+        <Select
+          options={[
+            { value: "main", label: "Main Character (+2 points)" },
+            { value: "alt", label: "Alt Character (+1 point)" },
+          ]}
+          value={selectedRecruitType}
+          onChange={setSelectedRecruitType}
+          placeholder="Select Recruit Type..."
+          isSearchable
+          className="text-black"
         />
         <button
           type="submit"
