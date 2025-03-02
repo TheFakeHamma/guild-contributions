@@ -6,6 +6,7 @@ import { User } from "../types";
 const API_URL = import.meta.env.VITE_API_URL;
 
 interface Contribution {
+  id: number;
   item_name: string;
   quantity: number;
   amount: number;
@@ -36,22 +37,69 @@ function UserProfile() {
   const [totalPoints, setTotalPoints] = useState<number>(0);
 
   useEffect(() => {
-    axios
-      .get<User>(`${API_URL}/users/${id}`)
-      .then((response) => setUser(response.data));
-    axios
-      .get<Contribution[]>(`${API_URL}/contributions/user/${id}`)
-      .then((response) => setContributions(response.data));
-    axios
-      .get<RecruitedPlayer[]>(`${API_URL}/recruitments/user/${id}`)
-      .then((response) => setRecruitedPlayers(response.data));
-    axios
-      .get<HistoryLog[]>(`${API_URL}/history/user/${id}`)
-      .then((response) => setHistory(response.data));
-    axios
-      .get<{ points: number }>(`${API_URL}/campaign/progress/${id}`)
-      .then((response) => setTotalPoints(response.data.points));
+    const fetchData = async () => {
+      try {
+        const userRes = await axios.get<User>(`${API_URL}/users/${id}`);
+        setUser(userRes.data);
+
+        const contributionsRes = await axios.get<Contribution[]>(
+          `${API_URL}/contributions/user/${id}`
+        );
+        console.log("📥 Contributions Data:", contributionsRes.data);
+        setContributions(contributionsRes.data);
+
+        const recruitsRes = await axios.get<RecruitedPlayer[]>(
+          `${API_URL}/recruitments/user/${id}`
+        );
+        setRecruitedPlayers(recruitsRes.data);
+
+        const historyRes = await axios.get<HistoryLog[]>(
+          `${API_URL}/history/user/${id}`
+        );
+        setHistory(historyRes.data);
+
+        const pointsRes = await axios.get<{ points: number }>(
+          `${API_URL}/campaign/progress/${id}`
+        );
+        setTotalPoints(pointsRes.data.points);
+      } catch (error) {
+        console.error("❌ Error fetching user profile data", error);
+      }
+    };
+
+    fetchData();
   }, [id]);
+
+  const removeContribution = async (
+    contributionId: number | null,
+    pointsAwarded: number
+  ) => {
+    console.log("🛠 Trying to Remove Contribution:", {
+      contributionId,
+      pointsAwarded,
+    });
+
+    if (!contributionId) {
+      console.error("❌ Contribution ID is null or undefined:", contributionId);
+      return;
+    }
+
+    try {
+      const response = await axios.delete(`${API_URL}/contributions/remove`, {
+        params: {
+          contribution_id: contributionId, // ✅ Ensure this is passed
+          user_id: id,
+        },
+      });
+
+      if (response.status === 200) {
+        setContributions((prev) => prev.filter((c) => c.id !== contributionId));
+        setTotalPoints((prev) => prev - pointsAwarded);
+      }
+    } catch (error) {
+      console.error("❌ Error removing contribution", error);
+    }
+  };
 
   if (!user) return <div className="text-white">Loading...</div>;
 
@@ -62,13 +110,24 @@ function UserProfile() {
 
       <h2 className="text-xl font-bold mt-6">Contributions</h2>
       <ul className="w-96">
-        {contributions.map((c, index) => (
-          <li key={index} className="p-2 bg-gray-800 border-b border-gray-700">
-            {c.quantity}x ({c.amount}x) {c.item_name}
-            <span className="text-green-400">
-              {" "}
-              (+{c.points_awarded} points)
+        {contributions.map((c) => (
+          <li
+            key={c.id}
+            className="p-2 bg-gray-800 border-b border-gray-700 flex justify-between"
+          >
+            <span>
+              {c.quantity}x ({c.amount} per contribution) {c.item_name}
+              <span className="text-green-400">
+                {" "}
+                (+{c.points_awarded} points)
+              </span>
             </span>
+            <button
+              onClick={() => removeContribution(c.id, c.points_awarded)}
+              className="text-red-500 hover:underline"
+            >
+              ❌ Remove
+            </button>
           </li>
         ))}
       </ul>
