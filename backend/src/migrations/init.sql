@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS contributions (
 -- Campaign progress table
 CREATE TABLE IF NOT EXISTS campaign_progress (
     id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(id) ON DELETE CASCADE,
+    user_id INT UNIQUE REFERENCES users(id) ON DELETE CASCADE, -- Make user_id UNIQUE
     points INT DEFAULT 0,
     rewards_claimed JSONB DEFAULT '[]',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
