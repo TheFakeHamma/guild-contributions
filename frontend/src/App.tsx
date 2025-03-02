@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Register from "./pages/Register";
 import Users from "./pages/Users";
 import UserProfile from "./pages/UserProfile";
+import Recruits from "./pages/Recruits";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/contribution" element={<Contribution />} />
         <Route path="/users" element={<Users />} />
         <Route path="/users/:id" element={<UserProfile />} />
+        <Route path="/recruits" element={<Recruits />} />
       </Routes>
     </Router>
   );

@@ -33,6 +33,22 @@ const getUserRecruits = async (req, res) => {
     }
 };
 
+const getAllRecruits = async (req, res) => {
+    try {
+        const result = await pool.query(
+            `SELECT r.id, r.recruit_name, r.recruit_type, r.participated_in_raid, 
+                    u.id AS recruiter_id, u.username AS recruiter_name
+             FROM recruitments r
+             JOIN users u ON r.recruiter_id = u.id
+             ORDER BY r.created_at DESC`
+        );
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
 const markRecruitRaid = async (req, res) => {
     try {
         const { recruit_id, recruiter_id } = req.body;
@@ -80,4 +96,4 @@ const deleteRecruit = async (req, res) => {
     }
 };
 
-module.exports = { getUserRecruits, recruitPlayer, markRecruitRaid, deleteRecruit };
+module.exports = { getAllRecruits, getUserRecruits, recruitPlayer, markRecruitRaid, deleteRecruit };
