@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   db:
     image: postgres:15
@@ -11,6 +13,21 @@ services:
       POSTGRES_DB: powerhouse
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./src/migrations:/docker-entrypoint-initdb.d
+
+  backend:
+    image: node:22 # Use official Node.js image
+    container_name: powerhouse-backend
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+    command: >
+      sh -c "node src/migrations/migrate.js && npm start"
+    environment:
+      - DATABASE_URL=postgres://admin:secretpassword@db:5432/powerhouse
+
 volumes:
   postgres_data:
