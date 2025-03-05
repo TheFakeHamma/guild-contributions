@@ -1,20 +1,20 @@
-# Use Node.js 18 base image
+# Use an official Node.js runtime as a parent image
 FROM node:18
 
-# Set the working directory inside the container
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package.json and package-lock.json first (to take advantage of Docker caching)
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy all backend files
+# Copy the rest of the application files
 COPY . .
 
-# Expose the port (Ensure your backend uses PORT 3001 or similar)
+# Expose the application port (must match the one in your backend)
 EXPOSE 3001
 
-# Start the server
+# Start the application
 CMD ["npm", "start"]
