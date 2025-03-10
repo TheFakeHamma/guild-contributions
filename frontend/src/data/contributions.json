@@ -30,14 +30,14 @@
     "points": 1.5
   },
   {
-    "name": "Dreadstone",
+    "name": "Dreadstone (2x points)",
     "amount": 1,
-    "points": 1
+    "points": 2
   },
   {
-    "name": "Dragon's Eye",
+    "name": "Dragon's Eye (2x points",
     "amount": 1,
-    "points": 1
+    "points": 2
   },
   {
     "name": "Siren's Tear",
@@ -50,17 +50,17 @@
     "points": 2
   },
   {
-    "name": "All Northrend leathers",
+    "name": "All Northrend leathers (2x points)",
     "amount": 10,
-    "points": 1
+    "points": 2
   },
   {
-    "name": "Bolt of Imbued Frostweave Cloth",
+    "name": "Bolt of Imbued Frostweave Cloth (2x points)",
     "amount": 5,
-    "points": 1
+    "points": 2
   },
   {
-    "name": "Frozen Lotus",
+    "name": "Frost Lotus",
     "amount": 5,
     "points": 2
   },
@@ -85,9 +85,9 @@
     "points": 2
   },
   {
-    "name": "Runed Orb",
+    "name": "Runed Orb (2x points)",
     "amount": 1,
-    "points": 2
+    "points": 4
   },
   {
     "name": "Crafted/rare ilvl 245+ BoEs",
@@ -113,5 +113,20 @@
     "name": "Eternal Fire & Shadow",
     "amount": 4,
     "points": 0.5
+  },
+  {
+    "name": "Adder's Tongue",
+    "amount": 10,
+    "points": 0.5
+  },
+  {
+    "name": "Icethorn",
+    "amount": 10,
+    "points": 0.5
+  },
+  {
+    "name": "Titanium Powder",
+    "amount": 10,
+    "points": 1.5
   }
 ]
