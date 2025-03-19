@@ -35,24 +35,24 @@
     "points": 2
   },
   {
-    "name": "Dragon's Eye (2x points",
+    "name": "Dragon's Eye (2x points)",
     "amount": 1,
     "points": 2
   },
   {
-    "name": "Siren's Tear",
+    "name": "Siren's Tear (2x points)",
     "amount": 1,
-    "points": 0.5
+    "points": 1
   },
   {
-    "name": "Arctic Fur",
+    "name": "Arctic Fur (2x points)",
     "amount": 4,
-    "points": 2
+    "points": 4
   },
   {
-    "name": "All Northrend leathers (2x points)",
+    "name": "All Northrend leathers",
     "amount": 10,
-    "points": 2
+    "points": 1
   },
   {
     "name": "Bolt of Imbued Frostweave Cloth (2x points)",
@@ -70,9 +70,9 @@
     "points": 1
   },
   {
-    "name": "Lichbloom",
+    "name": "Lichbloom (2x points)",
     "amount": 10,
-    "points": 0.5
+    "points": 1
   },
   {
     "name": "Primordial Saronite",
@@ -85,9 +85,9 @@
     "points": 2
   },
   {
-    "name": "Runed Orb (2x points)",
+    "name": "Runed Orb",
     "amount": 1,
-    "points": 4
+    "points": 2
   },
   {
     "name": "Crafted/rare ilvl 245+ BoEs",
@@ -125,8 +125,8 @@
     "points": 0.5
   },
   {
-    "name": "Titanium Powder",
+    "name": "Titanium Powder (2x points)",
     "amount": 10,
-    "points": 1.5
+    "points": 3
   }
 ]
