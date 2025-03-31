@@ -1,8 +1,8 @@
 [
   {
-    "name": "Titansteel Bar",
+    "name": "Titansteel Bar (2x Points)",
     "amount": 5,
-    "points": 2
+    "points": 4
   },
   {
     "name": "Titanium Bar",
@@ -30,34 +30,34 @@
     "points": 1.5
   },
   {
-    "name": "Dreadstone (2x points)",
-    "amount": 1,
-    "points": 2
-  },
-  {
-    "name": "Dragon's Eye (2x points)",
-    "amount": 1,
-    "points": 2
-  },
-  {
-    "name": "Siren's Tear (2x points)",
+    "name": "Dreadstone ",
     "amount": 1,
     "points": 1
   },
   {
-    "name": "Arctic Fur (2x points)",
+    "name": "Dragon's Eye",
+    "amount": 1,
+    "points": 1
+  },
+  {
+    "name": "Siren's Tear",
+    "amount": 1,
+    "points": 0.5
+  },
+  {
+    "name": "Arctic Fur",
     "amount": 4,
-    "points": 4
-  },
-  {
-    "name": "All Northrend leathers",
-    "amount": 10,
-    "points": 1
-  },
-  {
-    "name": "Bolt of Imbued Frostweave Cloth (2x points)",
-    "amount": 5,
     "points": 2
+  },
+  {
+    "name": "All Northrend leathers (2x Points)",
+    "amount": 10,
+    "points": 2
+  },
+  {
+    "name": "Bolt of Imbued Frostweave Cloth",
+    "amount": 5,
+    "points": 1
   },
   {
     "name": "Frost Lotus",
@@ -75,9 +75,9 @@
     "points": 1
   },
   {
-    "name": "Primordial Saronite",
+    "name": "Primordial Saronite (2x Points)",
     "amount": 1,
-    "points": 2
+    "points": 4
   },
   {
     "name": "Crusader Orb",
@@ -95,9 +95,9 @@
     "points": 2
   },
   {
-    "name": "ToC + Ulduar patterns/schematics/plans/recipes",
+    "name": "ToC + Ulduar patterns/schematics/plans/recipes (2x Points)",
     "amount": 1,
-    "points": 1.5
+    "points": 3
   },
   {
     "name": "Frozen Orb",
@@ -110,9 +110,9 @@
     "points": 0.5
   },
   {
-    "name": "Eternal Fire & Shadow",
+    "name": "Eternal Fire & Shadow (2x Points)",
     "amount": 4,
-    "points": 0.5
+    "points": 1
   },
   {
     "name": "Adder's Tongue",
@@ -120,9 +120,9 @@
     "points": 0.5
   },
   {
-    "name": "Icethorn",
+    "name": "Icethorn (2x Points)",
     "amount": 10,
-    "points": 0.5
+    "points": 1
   },
   {
     "name": "Titanium Powder (2x points)",
